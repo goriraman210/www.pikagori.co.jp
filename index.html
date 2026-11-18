@@ -1,611 +1,1612 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffd400">
-<meta name="description" content="ピカごり公式サイト">
-<link rel="icon" href="pikagori-logo.png" sizes="ani">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Search Console -->
+     <meta name="google-site-verification" content="kcyznOzcXWLUYEen5ZxSg4Mx_Sk1NxWzVMHEVlLcEug" />
 
-<title>PIKAGORI_YUKKE | 公式サイト</title>
+    <title>spin-off（スピンオフ）漢字 Typing</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
-        <!-- Font Awesome 6 CDN 読み込み -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="favicon (8).ico" sizes="any">
 
+    <!-- Font Awesome 6 CDN 読み込み -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root {
-  --yellow: #ffd400;
-  --black: #171717;
-  --white: #ffffff;
-  --cream: #fffdf5;
+    body{
+    margin:0;
+    background:#232222;
+    overflow:hidden;
+
+    font-family:"Yomogi", cursive;
 }
 
-* {
-  box-sizing: border-box;
+
+/* タイトル画面 */
+
+#title-screen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:#232222;
+    color:#fff;
+
+    font-family:"Yomogi", cursive;
+
+    opacity:0;
+    transition:opacity 0.8s ease;
+
 }
 
-html {
-  scroll-behavior: smooth;
+
+#title-screen.show{
+    opacity:1;
 }
 
-body {
-  margin: 0;
-  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-  color: var(--black);
-  background: var(--cream);
-  font-family: "Yomogi", cursive;
+
+#title-screen.hide{
+    opacity:0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+
+
+#title-screen h1{
+
+    margin:0;
+
+    font-size:64px;
+
+    line-height:1.3;
+
 }
 
-/* HEADER */
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #eee;
+
+.gradient-text{
+
+    background:linear-gradient(to bottom,#FFD700,#00C853);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+
+    color:transparent;
+
+    font-size:52px;
+
 }
 
-.header-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 12px 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+
+/* 会社名画面 */
+
+#company-screen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:#232222;
+
+    font-family:"Yomogi", cursive;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
+
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 25px;
-  font-weight: 1000;
+
+
+#company-screen.show{
+
+    opacity:1;
+
 }
 
-.logo img {
-  width: 55px;
-  height: auto;
+
+
+#company-screen.hide{
+
+    opacity:0;
+
 }
 
-nav {
-  display: flex;
-  gap: 30px;
-  font-size: 14px;
-  font-weight: 900;
+
+
+.company{
+
+    color:#fff;
+
+    font-size:56px;
+
+    margin-bottom:50px;
+
 }
 
-nav a {
-  transition: .2s;
+
+
+.member-grid{
+
+    display:grid;
+
+    grid-template-columns:auto auto;
+
+    gap:20px 120px;
+
+    justify-content:center;
+
 }
 
-nav a:hover {
-  color: #d5a900;
+
+
+.member{
+
+    font-size:40px;
+
+
+    background:linear-gradient(to bottom,#ffffff,#66ccff);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+
+    color:transparent;
+
+}
+/* OP省略 */
+
+#skip-screen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#000;
+    color:#fff;
+
+    font-family:"Yomogi", cursive;
+
+    opacity:0;
+    transition:opacity .8s ease;
+
 }
 
-/* HERO */
-
-.hero {
-  background: var(--yellow);
-  padding: 75px 25px;
-  overflow: hidden;
+#skip-screen.show{
+    opacity:1;
 }
 
-.hero-inner {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 45px;
+#skip-screen.hide{
+    opacity:0;
 }
 
-.hero h1 {
-  font-size: clamp(40px, 6vw, 75px);
-  line-height: 1.2;
-  font-weight: 1000;
-  margin: 15px 0;
-  letter-spacing: -4px;
+#skip-screen h1{
+    font-size:60px;
+}
+/* スタート画面 */
+
+#start-screen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#232222;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
+
 }
 
-.hero p {
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 2;
+#start-screen.show{
+
+    opacity:1;
+
 }
 
-.hero-logo {
-  background: white;
-  padding: 15px;
-  border: 5px solid var(--black);
-  border-radius: 30px;
-  box-shadow: 12px 12px 0 var(--black);
-  transform: rotate(2deg);
+#start-btn{
+
+    width:320px;
+    height:90px;
+
+    border:none;
+    border-radius:18px;
+
+    background:#666;
+
+    color:#fff;
+
+    font-size:40px;
+
+    font-family:"Yomogi", cursive;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
 }
 
-.hero-logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
+#start-btn:hover{
+
+    background:#888;
+
+    transform:scale(1.05);
+
 }
+/* 名前入力画面 */
+#name-panel{
 
-.button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 15px 30px;
-  background: var(--black);
-  color: white;
-  border-radius: 50px;
-  font-weight: 900;
-  transition: .3s;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
 
-.button:hover {
-  transform: translateY(-5px);
-}
-
-/* NEWS */
-
-.section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 85px 25px;
-}
-
-.section-title {
-  margin-bottom: 35px;
-}
-
-.section-title small {
-  color: #a18400;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.section-title h2 {
-  font-size: 45px;
-  margin: 5px 0;
-}
-
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.news-card {
-  min-width: 0;
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid #eee;
-  transition: .3s;
-}
-
-.news-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 12px 25px #00000015;
-}
-
-/* NEWS VIDEO */
-
-.news-image {
-  width: 100%;
-  height: 180px;
-  background: var(--yellow);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  font-size: 42px;
-  font-weight: 1000;
-}
-
-.news-image.video-news {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 180px;
-  padding: 0;
-  overflow: hidden;
-  background: #000;
-}
-
-.news-image.video-news video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  object-position: center;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.news-image.black {
-  background: var(--black);
-  color: var(--yellow);
-}
-
-.news-text {
-  padding: 20px;
-}
-
-.news-text small {
-  color: #888;
-}
-
-.news-text h3 {
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* ABOUT */
-
-.about {
-  background: var(--black);
-  color: white;
-}
-
-.about-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 85px 25px;
-}
-
-.about h2 {
-  font-size: 45px;
-}
-
-.about p {
-  line-height: 2;
-  max-width: 700px;
-}
-
-/* CHARACTER */
-
-.character {
-  text-align: center;
-}
-
-.character img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-}
-
-.character h2 {
-  font-size: 42px;
-}
-
-/* CONTACT */
-
-.contact {
-  background: var(--yellow);
-  text-align: center;
-  padding: 70px 20px;
-}
-
-.contact h2 {
-  font-size: 40px;
-}
-
-.contact p {
-  font-weight: bold;
-}
-
-.contact a {
-  display: inline-block;
-  padding: 15px 35px;
-  background: var(--black);
-  color: white;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: .3s;
-}
-
-.contact a:hover {
-  transform: translateY(-5px);
-}
-
-/* FOOTER */
-
-footer {
-  background: var(--black);
-  color: white;
-  text-align: center;
-  padding: 45px 20px;
-}
-
-footer h2 {
-  font-size: 24px;
-}
-
-footer h2 a:hover {
-  color: var(--yellow);
-}
-
-footer p {
-  color: #aaa;
-  font-size: 12px;
-}
-
-/* MOBILE */
-
-@media(max-width: 760px) {
-
-  .header-inner {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  nav {
     width: 100%;
+    height: 100vh;
+
+    display: none;
+
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    font-size: 12px;
-    padding: 10px 0;
-  }
+    align-items: center;
 
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 35px;
-  }
-
-  .hero h1 {
-    font-size: 43px;
-    letter-spacing: -2px;
-  }
-
-  .hero-logo {
-    max-width: 520px;
-    margin: auto;
-  }
-
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .news-image.video-news {
-    height: 200px;
-  }
-
-  .section-title h2,
-  .about h2 {
-    font-size: 35px;
-  }
-
-  .character h2 {
-    font-size: 35px;
-  }
-
-  .contact h2 {
-    font-size: 30px;
-  }
+    background: rgba(0,0,0,.6);
 
 }
 
-/* REDUCED MOTION */
+#name-panel.show{
 
-@media(prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+    display: flex;
 
-  *, *::before, *::after {
-    transition-duration: .01ms !important;
-  }
+}
+
+#name-panel .panel{
+
+    width: 500px;
+    padding: 35px;
+
+    background: #6f6f6f;
+
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 25px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+
+}
+/* タイトル */
+#name-panel h2{
+    margin: 0;
+    color: white;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+/* 入力欄 */
+#player-name{
+    width: 90%;
+    height: 65px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    font-size: 28px;
+    text-align: center;
+    outline: none;
+
+    font-family: "Yomogi", cursive;
+}
+
+/* 決定ボタン */
+#name-ok-btn{
+    width: 90%;
+    height: 70px;
+    border: none;
+    border-radius: 15px;
+    background: #59d8ff;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+
+    font-family: "Yomogi", cursive;
+}
+
+#name-ok-btn:hover{
+    background: #38cbff;
+    transform: scale(1.03);
+}
+
+#name-ok-btn:active{
+    transform: scale(0.98);
+}
+/* 性別パネル */
+
+#gender-panel{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.6);
+
+    font-family:"Yomogi", cursive;
+
+}
+
+#gender-panel.show{
+
+    display:flex;
+
+}
+
+#gender-panel .panel{
+
+    width:500px;
+
+    padding:35px;
+
+    background:#6f6f6f;
+
+    border-radius:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+#gender-panel h2{
+
+    margin:0;
+
+    color:white;
+
+    font-size:40px;
+
+}
+
+.gender-area{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-around;
+
+}
+
+.gender-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    cursor:pointer;
+
+}
+
+.gender-icon{
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:48px;
+
+    color:white;
+
+}
+
+#male-box .gender-icon{
+
+    background:#4fc3ff;
+
+}
+
+#female-box .gender-icon{
+
+    background:#ff6bb5;
+
+}
+
+.gender-arrow{
+
+    margin-top:15px;
+
+    font-size:42px;
+
+    color:white;
+
+    height:42px;
+
+}
+
+.gender-arrow.show{
+
+    visibility:visible;
+
+}
+
+#gender-ok-btn{
+
+    width:90%;
+    height:70px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#59d8ff;
+
+    color:white;
+
+    font-size:30px;
+
+    font-family:"Yomogi", cursive;
+
+    cursor:pointer;
+
+}
+/* プレイヤー生成画面 */
+
+#create-screen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    background:#232222;
+
+}
+
+#create-screen.show{
+
+    display:flex;
+
+}
+#gear{
+    position:fixed;
+    left:50%;
+    top: 35%;
+    transform:translate(-50%,-50%);
+
+    transition:
+        left 1.2s ease,
+        top 1.2s ease;
+        z-index:1000;
+}
+#gear.move{
+    animation: gearMove 1.2s ease forwards;
+}
+
+@keyframes gearMove{
+
+    0%{
+        
+        transform:translate(-50%,-50%) rotate(0deg);
+        font-size:39px;
+    }
+
+    40%{
+        transform:translate(-50%,-50%) rotate(360deg);
+        font-size:58px;
+    }
+
+    75%{
+        transform:translate(-50%,-50%) rotate(630deg);
+        font-size:48px;
+    }
+
+    100%{
+        transform:translate(-50%,-50%) rotate(720deg);
+        font-size:27px;
+    }
+
+}
+#scroll-icon.move{
+    animation: scrollMove 1.2s ease forwards;
+}
+
+@keyframes scrollMove{
+
+    0%{
+        transform:translate(0,-50%) rotate(0deg);
+        font-size:60px;
+    }
+
+    40%{
+        transform:translate(0,-50%) rotate(360deg);
+        font-size:58px;
+    }
+
+    75%{
+        transform:translate(0,-50%) rotate(630deg);
+        font-size:48px;
+    }
+
+    100%{
+        transform:translate(0,-50%) rotate(720deg);
+        font-size:27px;
+    }
+
+}
+#player-ball{
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    margin-top:-30px;
+
+    background:#4fc3ff;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* スキップ文字 */
+
+#skip-text{
+
+    position: fixed;
+
+    left: 20px;
+    bottom: 20px;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-family: "Yomogi", cursive;
+
+    opacity: 0.7;
+
+    user-select: none;
+}
+#top-bar{
+    position:fixed;
+    top:-80px;
+    left:50%;
+    transform:translateX(-50%);
+    width:80%;
+    height:35px;
+    background:#808080;
+    border-radius:12px;
+    transition:top .6s ease;
+}
+
+#top-bar.show{
+    top:2cm;            /* 上から約2cm */
+    z-index: 999;
+}
+#scroll-icon{
+    position:fixed;
+    top:50%;transform:translate(50px,-50%);
+    right:10%;
+    width:80px;    height:80px;
+    display:flex;    justify-content:center;    align-items:center;
+    font-size:60px;
+    opacity:0;
+    transform:translateX(50px);
+    transition:all .8s ease;
+    z-index: 1000; /* バー(999)よりも前面に表示 */
+}
+#scroll-icon.show{
+
+    opacity:1;
+
+    transform:translate(0,-50%);
+
+}
+#player-ball{
+
+    position:fixed;
+
+    left:50%;
+
+    width:80px;
+    height:80px;
+
+    object-fit:contain;
+
+    transform:translateX(-50%);
+
+    transition:left 0.8s ease;
+
+}
+#op-video{
+
+    width:80%;
+    height:auto;
+
+}
+
+
+#op-start-btn{
+    display:none;
+
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    width:320px;
+    height:90px;
+
+    border:none;
+    border-radius:18px;
+
+    background:#666;
+    color:white;
+
+    font-size:40px;
+    font-family:"Yomogi", cursive;
+
+    cursor:pointer;
+
+    opacity:0;
+    transition:opacity .8s ease;
+}
+
+#op-start-btn.show{
+    opacity:1;
+}
+#op-start-btn:hover{
+
+    background:#888;
+
+}
+/* 敵 */
+#enemy{
+    position:fixed;
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    left:50%;
+    top:35%;
+    transform:translate(-50%,-50%);
+    z-index:500;
+    display:none;
+
+    /* 背景が黒い場合にグレーの模様を馴染ませる */
+    mix-blend-mode: screen;
+}
+
+/* 敵の頭上 */
+
+#enemy-kanji{
+    position:fixed;
+
+    left:50%;
+    top:calc(35% - 70px);
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    text-align:center;
+
+    font-family:"Yomogi", cursive;
+
+    font-size:28px;
+
+    z-index:501;
+
+    display:none;
+
+    pointer-events:none;
+}
+
+#enemy-romaji{
+    font-size:20px;
+    margin-top:2px;
+}
+
+/*敵の消滅アニメーションだよ!!*/
+@keyframes fadeOutEnemy{
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+.enemy-fade-out{
+    animation: fadeOutEnemy 0.8s ease forwards;
 }
 
 </style>
 </head>
 
+
 <body>
+    
 
-<!-- HEADER -->
+    <!-- タイトル画面 -->
+    <div id="title-screen">
 
-<header>
-  <div class="header-inner">
+        <h1>
+            漢字 Typing<br>
 
-    <a href="#" class="logo">
-      <img src="pikagori-logo.png" alt="ピカごり">
-      ピカごり
-    </a>
+            <span class="gradient-text">
+                spin-off スピンオフ
+            </span>
 
-    <nav>
-      <a href="#news">NEWS</a>
-      <a href="#about">ABOUT</a>
-      <a href="#character">CHARACTER</a>
-      <a href="#contents">CONTENTS</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+        </h1>
 
-  </div>
-</header>
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="hero-inner">
-
-    <div>
-      <small>PIKAGORI OFFICIAL WEBSITE</small>
-
-      <h1>
-        PIKAGORI_YUKKE　公式ページ
-      </h1>
-
-      <a href="#character" class="button">
-        ピカごりを知る →
-      </a>
     </div>
 
-    <div class="hero-logo">
-      <img src="pikagori-logo.png" alt="ピカごりのロゴ">
+
+
+    <!-- 会社名画面 -->
+    <div id="company-screen">
+
+        <div>
+
+            <div class="company">
+                会社＆ニックネーム
+            </div>
+
+            <div class="member-grid">
+
+                <div class="member">©月満社</div>
+                <div class="member">Sさん</div>
+
+                <div class="member">©The Original 0</div>
+                <div class="member">ピカごり_pikagori</div>
+
+                <div class="member">©The Original 0</div>
+                <div class="member">Dさん</div>
+
+            </div>
+
+        </div>
+
     </div>
 
-  </div>
-
-</section>
-
-<!-- NEWS -->
-
-<section class="section" id="news">
-
-  <div class="section-title">
-    <small>WHAT'S NEW</small>
-    <h2>NEWS</h2>
-    <p>ピカごりからのお知らせ</p>
-  </div>
-
-  <div class="news-grid">
-
-    <article class="news-card">
-
-      <div class="news-image video-news">
-
-        <video
-          id="op-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          aria-label="ピカごりのオープニング動画">
-
-          <source src="open.mp4" type="video/mp4">
-
-          お使いのブラウザは動画に対応していません。
-
-        </video>
-
-      </div>
-
-      <div class="news-text">
-
-        <small>2026.11. / お知らせ</small>
-
-        <h3>
-          PIKAGORI_YUKKE 公式サイトがオープンしました！
-        </h3>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-  <div class="about-inner">
-
-    <small>ABOUT PIKAGORI</small>
-
-    <h2>ピカごりについて</h2>
-
-    <p>
-      ピカごりは、ひらめきの明るさと
-      ゴリラの頼もしさをあわせ持つキャラクターです。
-      親指を立てて、みんなに元気と笑顔を届けます。
-    </p>
-
-  </div>
-
-</section>
-
-<!-- CHARACTER -->
-
-<section class="section character" id="character">
-
-  <div class="section-title">
-
-    <small>MEET THE CHARACTER</small>
-
-    <h2>CHARACTER</h2>
-
-  </div>
-
-  <img src="pikagori-logo.png" alt="ピカごり">
-
-  <h2>ピカごり</h2>
-
-  <p>
-    pikagori<br>誕生日は2/10<br>好きなものは文房具です。
-  </p>
-
-</section>
-
-<!-- CONTENTS -->
-
-<section class="about" id="contents">
-
-  <div class="about-inner">
-
-    <small>pikagori-ivent</small>
-
-    <h2>Ivent</h2>
-
-    <img src="kanji-typing-cm.png" alt="イベント①" class="event-image">
-  </div>
-
-</section>
 
 
-<section class="about" id="contents">
+<!-- OP動画 -->
+<div id="skip-screen">
 
-  <div class="about-inner">
+<video
+    id="op-video"
+    src="op.mp4"
+    muted
+    playsinline>
+</video>
 
-    <small>PIKAGORI WORLD</small>
+    <button id="op-start-btn">
+        START
+    </button>
 
-    <h2>CONTENTS</h2>
+</div>
 
-    <p>
-      ピカごりの世界をもっと楽しもう！<br>
-      これからさまざまなコンテンツを展開予定です。
-    </p>
 
-  </div>
 
-</section>
+    <!-- スタート画面 -->
+    <div id="start-screen">
 
-</main>
+        <button id="start-btn">
+            START
+        </button>
 
-<!-- FOOTER -->
+    </div>
 
-<footer>
 
-  <h2>
-    <a href="https://www.youtube.com/@%E3%82%86%E3%81%A3%E3%81%91_%E4%B8%BC"
-       target="_blank"
-       rel="noopener noreferrer">
-      ピカごりのYouTubeコンテンツを配信中!! <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
-  </h2>
 
-  <p>
-    © 2026 PIKAGORI. All Rights Reserved.
-  </p>
+    <!-- 名前入力画面 -->
+<div id="name-panel">
 
-</footer>
+    <div class="panel">
+
+        <h2>名前を入力してくれ！</h2>
+
+        <input
+            type="text"
+            id="player-name"
+            placeholder="ここに名前を入力"
+            maxlength="12"
+        >
+
+        <button id="name-ok-btn">
+            決定
+        </button>
+
+    </div>
+
+</div>
+<!-- 性別選択画面 -->
+<div id="gender-panel">
+
+    <div class="panel">
+
+        <h2>男 or 女？</h2>
+
+        <div class="gender-area">
+
+<div class="gender-box" id="male-box">
+
+    <div class="gender-icon">
+        <img src="otoko.png" alt="" style="width: 76px; height: 76px;">
+    </div>
+
+    <div class="gender-arrow" id="male-arrow"></div>
+
+</div>
+
+            <div class="gender-box" id="female-box">
+
+    <div class="gender-icon">
+        <img src="onnna.png" alt="" style="width: 76px; height: 76px;">
+    </div>
+
+    <div class="gender-arrow" id="female-arrow"></div>
+
+</div>
+
+        </div>
+
+        <button id="gender-ok-btn">
+            決定!!
+        </button>
+
+    </div>
+
+</div>
+<!-- プレイヤー生成画面 -->
+<div id="create-screen">
+
+    <div id="gear"><i class="fa-solid fa-gear"></i></div>
+    <div id="top-bar"></div>
+    <img id="player-ball" src="">
+    <div id="scroll-icon"><i class="fa-solid fa-clipboard"></i></div>
+    <div id="three-container"></div>
+   <img id="enemy" src="sakana.png">
+<div id="enemy-kanji">
+    <div>魚</div>
+    <div id="enemy-romaji">??????</div>
+</div>
+</div>
+<div id="skip-text">スキップ（Zキー）</div>
+<!-- ピカごり_pikagori登場!! -->
+
+<script>
+        function showWMessage(){
+    document.getElementById("skip-text").textContent =
+    "↑ 上矢印キー(Wキー)を押すんだ!!";
+}
+        const title = document.getElementById("title-screen");
+const company = document.getElementById("company-screen");
+const skip = document.getElementById("skip-screen");
+
+const startScreen = document.getElementById("start-screen");
+const startBtn = document.getElementById("start-btn");
+
+const nameScreen = document.getElementById("name-panel");
+const nameOk = document.getElementById("name-ok-btn");
+const playerName = document.getElementById("player-name");
+const maleBox = document.getElementById("male-box");
+const femaleBox = document.getElementById("female-box");
+
+const maleArrow = document.getElementById("male-arrow");
+const femaleArrow = document.getElementById("female-arrow");
+
+const genderOkBtn = document.getElementById("gender-ok-btn");
+
+let selectedGender = "";
+
+// =========================
+// タイトル画面
+// =========================
+
+// 0.3秒後 タイトル表示
+setTimeout(() => {
+
+    title.classList.add("show");
+
+}, 300);
+
+// 2秒後 タイトルを消す
+setTimeout(() => {
+
+    title.classList.remove("show");
+    title.classList.add("hide");
+
+}, 2000);
+
+// =========================
+// 会社名画面
+// =========================
+
+// 2.8秒後 会社名表示
+setTimeout(() => {
+
+    company.classList.add("show");
+
+}, 2800);
+
+// 4.8秒後 会社名を消す
+setTimeout(() => {
+
+    company.classList.remove("show");
+    company.classList.add("hide");
+
+}, 4800);
+// =========================
+// OP動画
+// =========================
+
+// 5.6秒後 OP表示 ＆ 動画再生
+setTimeout(() => {
+
+    skip.classList.add("show");
+
+    opVideo.currentTime = 0;
+    opVideo.play();
+
+}, 5600);
+// =========================
+// START画面
+// =========================
+
+// STARTボタン
+startBtn.addEventListener("click", () => {
+
+    startScreen.style.display = "none";
+
+    nameScreen.classList.add("show");
+
+});
+
+// =========================
+// 名前決定
+// =========================
+
+nameOk.addEventListener("click", () => {
+
+    const name = playerName.value.trim();
+
+    if(name === ""){
+        alert("君の名前がわからないぞ！");
+        return;
+    }
+
+// 名前を保存
+localStorage.setItem("playerName", name);
+
+// 名前パネルを閉じる
+nameScreen.classList.remove("show");
+
+// 性別パネルを開く
+document.getElementById("gender-panel").classList.add("show");
+
+});
+
+const savedName = localStorage.getItem("playerName");
+
+if(savedName){
+    playerName.value = savedName;
+}
+// =========================
+// 性別選択
+// =========================
+
+maleBox.addEventListener("click", () => {
+
+    console.log("男が押された");
+
+    selectedGender = "男";
+
+    maleArrow.textContent = "↑";
+    femaleArrow.textContent = "";
+
+});
+
+femaleBox.addEventListener("click", () => {
+
+    console.log("女が押された");
+
+    selectedGender = "女";
+
+    femaleArrow.textContent = "↑";
+    maleArrow.textContent = "";
+
+});
+
+genderOkBtn.addEventListener("click", () => {
+console.log("selectedGender =", selectedGender);
+
+    if(selectedGender === ""){
+
+        alert("性別を選んでくれ！");
+        return;
+
+    }
+
+    localStorage.setItem("gender", selectedGender);
+
+    // 性別パネルを閉じる
+    document.getElementById("gender-panel").classList.remove("show");
+
+    // プレイヤー生成画面
+    document.getElementById("create-screen").classList.add("show");
+    showWMessage();
+    const savedGender = localStorage.getItem("gender");
+const player = document.getElementById("player-ball");
+if(savedGender === "男"){
+    player.style.background = "#4fc3ff";
+}
+
+if(savedGender === "女"){
+    player.style.background = "#ff6bb5";
+}
+
+    // 男なら水色
+    if(selectedGender === "男"){
+
+        document.getElementById("player-ball").style.background = "#4fc3ff";
+
+    }
+
+    // 女ならピンク
+    if(selectedGender === "女"){
+
+        document.getElementById("player-ball").style.background = "#ff6bb5";
+
+    }
+
+});
+
+// =========================
+// Zキーで全部スキップ
+// =========================
+document.addEventListener("keydown", (e) => {
+
+    if (e.key.toLowerCase() !== "z") return;
+    // 名前・性別が未設定ならスキップ禁止
+if (
+    !localStorage.getItem("playerName") ||
+    !localStorage.getItem("gender")
+) {
+    alert("先に名前と性別を決めてくれ！");
+    return;
+}
+// プレイヤー生成画面ではスキップ禁止
+if (document.getElementById("create-screen").classList.contains("show")) {
+    return;
+}
+
+    // 画面全体をふわっと消す
+    document.body.style.transition = "opacity .6s ease";
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+
+        // 全画面を非表示
+        title.style.display = "none";
+        company.style.display = "none";
+        skip.style.display = "none";
+        startScreen.style.display = "none";
+        nameScreen.classList.remove("show");
+        document.getElementById("gender-panel").classList.remove("show");
+
+        // プレイヤー生成画面
+        document.getElementById("create-screen").classList.add("show");
+        showWMessage();
+        // ふわっと戻す
+        document.body.style.opacity = "1";
+
+    }, 600);
+
+});
+const gear = document.getElementById("gear");
+
+let playerCanMove = false;
+let gearSize = 13;
+let barShown = false;
+let canMoveRight = false;
+const enemy = document.getElementById("enemy");
+const enemyKanji = document.getElementById("enemy-kanji");
+
+let enemyX = 50;
+let enemyY = 35;
+
+let enemyActive = false;
+let enemyDefeated = false;
+let scrollShown = false;
+
+document.addEventListener("keydown", (e) => {
+
+    if (
+        e.key !== "w" &&
+        e.key !== "W" &&
+        e.key !== "ArrowUp"
+    ) return;
+
+    // バーが出たら、歯車を動かなくする
+    if (barShown) return;
+
+    gearSize += 1;
+    gear.style.fontSize = gearSize + "px";
+
+if (gearSize >= 39) {
+    document.getElementById("skip-text").textContent =
+    "→ 右矢印キー(Dキー)を押すんだ!!";
+
+    const bar = document.getElementById("top-bar");
+
+    bar.classList.add("show");
+
+    // バーが降りてきてから位置を取得
+    setTimeout(() => {
+
+    // 先にアニメーションクラスをつける
+    gear.classList.add("move");
+
+    const rect = bar.getBoundingClientRect();
+
+    gear.style.left = (rect.left + 18) + "px";
+    gear.style.top = (rect.top + rect.height / 2) + "px";
+
+}, 600);
+    setTimeout(() => {
+
+    scrollIcon.classList.add("show");
+
+}, 1800);
+
+    gearSound.currentTime = 0;
+    gearSound.play();
+    barShown = true;
+    playerCanMove = true;
+    canMoveRight = true;
+}
+    
+
+});
+const gearSound = new Audio("gear.mp3");
+gearSound.volume = 0.6;
+const savedGender = localStorage.getItem("gender");
+const scrollIcon = document.getElementById("scroll-icon");
+
+let scrollRight = 10;
+let scrollMoved = false;
+console.log();
+document.addEventListener("keydown", (e) => {
+
+    if (
+        e.key !== "d" &&
+        e.key !== "D" &&
+        e.key !== "ArrowRight"
+    ) return;
+
+    if (!playerCanMove) return;
+    if (!canMoveRight) return;
+
+    const savedGender = localStorage.getItem("gender");
+
+    if (savedGender === "男") {
+        playerMove.src ="otoko2.png";
+    }
+
+    if (savedGender === "女") {
+        playerMove.src = "onnna2.png";
+    }
+
+
+
+if(savedGender === "女"){
+
+    player.src = "onnna2.png";
+    player.style.background = "transparent";
+
+}
+
+});
+// 主人公移動
+const playerMove = document.getElementById("player-ball");
+let playerX = 50;
+let playerY = 35;
+
+document.addEventListener("keydown", (e) => {
+
+   // 💡 修正：さかなを倒した後かつピカごりが出る前なら、上キー（W / ArrowUp）以外を無効化する
+    if (typeof enemyDefeated !== "undefined" && enemyDefeated && typeof pikagoriShown !== "undefined" && !pikagoriShown) {
+        const k = e.key.toLowerCase();
+        const orig = e.key;
+        if (k !== "w" && orig !== "ArrowUp") {
+            return; // 上キー以外は無視！
+        }
+    } if (!playerCanMove) return;
+
+    const key = e.key;
+
+    // 1. 右移動の判定（クリップボード取得前も取得後もいつでもOK）
+    if (key === "d" || key === "D" || key === "ArrowRight") {
+        if (!canMoveRight) return;
+
+        playerX += 0.7;
+        if (playerX > 90) playerX = 90;
+        playerMove.style.left = playerX + "%";
+
+        const savedGender = localStorage.getItem("gender");
+        if (savedGender === "男") {
+            playerMove.src = "otoko2.png";
+            playerMove.style.background = "transparent";
+        }
+        if (savedGender === "女") {
+            playerMove.src = "onnna2.png";
+            playerMove.style.background = "transparent";
+        }
+
+        // 主人公とスクロールが触れたか確認
+        if (!scrollMoved) {
+            const playerRect = playerMove.getBoundingClientRect();
+            const scrollRect = scrollIcon.getBoundingClientRect();
+
+            if (
+                playerRect.right >= scrollRect.left &&
+                playerRect.left <= scrollRect.right &&
+                playerRect.bottom >= scrollRect.top &&
+                playerRect.top <= scrollRect.bottom
+            ){
+                scrollMoved = true;
+
+                // スクロールをバーへ移動
+                const bar = document.getElementById("top-bar");
+                const rect = bar.getBoundingClientRect();
+
+                scrollIcon.style.left = (rect.left + 18) + "px";
+                scrollIcon.style.top = (rect.top + rect.height / 2) + "px";
+                scrollIcon.classList.add("move");
+
+                setTimeout(() => {
+                    enemyActive = true;
+                    enemy.style.display = "block";
+                    enemyKanji.style.display = "block";
+
+                    enemyX = 50;
+                    enemyY = 35;
+
+                    enemy.style.left = enemyX + "%";
+                    enemy.style.top = enemyY + "%";
+
+                    enemyKanji.style.left = enemyX + "%";
+                    enemyKanji.style.top = "calc(" + enemyY + "% - 120px)";
+                }, 1200);
+
+                const topbar = document.getElementById("top-bar");
+                const barRect = bar.getBoundingClientRect();
+
+                scrollIcon.style.transition = "all 1.2s ease";
+                scrollIcon.style.left = (barRect.left + 70) + "px";
+                scrollIcon.style.top = (barRect.top + barRect.height / 2) + "px";
+                scrollIcon.style.right = "";
+                scrollIcon.style.transform = "translateY(-50%) scale(0.45)";
+
+                // クリップボードを取ったときメッセージ変更
+                document.getElementById("skip-text").textContent = "sakanaと打ってみよう!!";
+            }
+        }
+    }
+    // 2. 下移動の判定 (クリップボードを取った後＝scrollMovedがtrueのときだけ有効)
+    if (scrollMoved && (key === "" || key === "" || key === "ArrowDown")) {
+        playerY += 0.7;
+        moved = true;
+    }
+
+    // 3. 左移動の判定（クリップボードを取った後＝scrollMovedがtrueのときだけ有効）
+    if (scrollMoved && (key === "a" || key === "A" || key === "ArrowLeft")) {
+        playerX -= 0.7;
+        if (playerX < 10) playerX = 10;
+        playerMove.style.left = playerX + "%";
+
+        // 左移動の画像切替だわよん
+        const savedGender = localStorage.getItem("gender");
+        if (savedGender === "男") {
+            playerMove.src ="otoko3.png";
+            playerMove.style.background = "transparent";
+        }
+        if (savedGender === "女") {
+            playerMove.src = "onnna3.png";
+            playerMove.style.background = "transparent";
+        }
+    }
+});const opVideo = document.getElementById("op-video");
+const opStartBtn = document.getElementById("op-start-btn");
+
+
+// 動画終了したらSTART表示
+opVideo.addEventListener("ended", () => {
+
+    // 動画をふわっと消す
+    opVideo.style.transition = "opacity 1s ease";
+    opVideo.style.opacity = "0";
+
+    // 黒画面になってからSTART表示
+    setTimeout(() => {
+
+        opStartBtn.style.display = "block";
+
+        // display:blockになったあとフェードイン
+        requestAnimationFrame(() => {
+            opStartBtn.classList.add("show");
+        });
+
+    }, 1000);
+
+});
+
+
+// START押したらゲーム開始
+opStartBtn.addEventListener("click", ()=>{
+
+    skip.classList.remove("show");
+    skip.classList.add("hide");
+
+    setTimeout(()=>{
+
+        startScreen.classList.add("show");
+
+    },800);
+
+});
+function moveEnemy(){
+
+    if(!enemyActive || enemyDefeated) return;
+
+
+    const dx = playerX - enemyX;
+    const dy = playerY - enemyY;
+
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+
+    if(distance > 0.5){
+
+        enemyX += (dx / distance) * 0.15;
+        enemyY += (dy / distance) * 0.15;
+
+    }
+
+
+    enemy.style.left = enemyX + "%";
+    enemy.style.top = enemyY + "%";
+
+
+    enemyKanji.style.left = enemyX + "%";
+    enemyKanji.style.top =
+        "calc(" + enemyY + "% - 70px)";
+
+
+    // 主人公に接触したら少し押し戻す
+    if(distance < 5){
+
+        playerX -= (dx / distance) * 0.5;
+        playerY -= (dy / distance) * 0.5;
+
+    }
+
+}
+
+// =========================
+// タイピング判定処理
+// =========================
+const targetWord = "sakana";
+let typedIndex = 0;
+
+window.addEventListener("keydown", (e) => {
+    // 魚（お題）が出現していない時は入力を無視
+    if (!enemyActive || enemyDefeated) return;
+
+    // 押されたキーが正解の文字（小文字）と一致するか
+    if (e.key.toLowerCase() === targetWord[typedIndex]) {
+        typedIndex++;
+
+    // 正しく打つたびにパソコンのクリック音だよーお
+    const katiSound = new Audio("PC-Mouse06-1.mp3")
+    katiSound.volume = 0.5;
+    katiSound.play().catch(err => console.log("音声エラーが発生しました",err));
+
+        // 打った分はアルファベット、残りは ? にする
+        const currentDisplay = targetWord.slice(0, typedIndex) + "?".repeat(targetWord.length - typedIndex);
+        
+        // ローマ字の部分（#enemy-romaji）だけを書き換えよーお
+        const enemyRomaji = document.getElementById("enemy-romaji");
+        if (enemyRomaji) {
+            enemyRomaji.innerText = currentDisplay;
+        }
+
+        // 最後まで打ち終わったときはー？
+        if (typedIndex === targetWord.length) {
+            console.log("魚を倒した!!");
+            enemyDefeated = true;
+
+        // 魚を倒したらsakana.pm3(死んだ後のうめき声)を追加しましょー!!
+
+        const sakanaSound = new Audio("sakana.mp3");
+        sakanaSound.volume = 0.7;
+        sakanaSound.play().catch(e => console.log("音声エラーが発生しました",e));
+
+        // 敵と感じがふわっと消えるよー!!
+        enemy.classList.add("enemy-fade-out");
+        enemyKanji.classList.add("enemy-fade-out");
+
+        // アニメーションが終わる時間(0.8s後)に完全に非表示にする
+        setTimeout(() => {
+            enemy.style.display = "none";
+            enemyKanji.style.display = "none";
+        },800);
+
+        // 1.左下のメッセージ変更だよーお
+        document.getElementById("skip-text").textContent = "あれっ? あそこの影にいるのはなんだろう?↑キーをおして確かめよう";
+        }
+
+        // 2.プレイヤーボールに戻す　男:水色　女:ピンク
+        const savedGender = localStorage.getItem("gender");
+        const player = document.getElementById("player-ball");
+        player.src = "";// プレイヤー画像を外す
+        if (savedGender === "男") {
+            player.style.background = "#4fc3ff"; // 水色
+        } else if (savedGender === "女") {
+            player.style.background = "ff6bb5"; // ピンク
+        }
+    }
+});
+// =========================
+// 上キー 3秒長押しで pikagori.png 出現
+// =========================
+let upPressTimer = null;
+let pikagoriShown = false;
+
+// キーを押した瞬間
+document.addEventListener("keydown", (e) => {
+    // さかなを倒した後かつ、まだピカごりが出ていない場合のみ
+    if (!enemyDefeated || pikagoriShown) return;
+
+    if (e.key === "w" || e.key === "W" || e.key === "ArrowUp") {
+        // すでにタイマーが動いていなければ、3秒のカウントダウンを開始
+        if (!upPressTimer) {
+            console.log("上キー長押し開始...");
+            upPressTimer = setTimeout(() => {
+                pikagoriShown = true;
+                showPikagori();
+            }, 3000); // 3000ミリ秒 = 3秒
+        }
+    }
+});
+
+// キーを離した瞬間（途中で離したらタイマーをキャンセル）
+document.addEventListener("keyup", (e) => {
+    if (e.key === "w" || e.key === "W" || e.key === "ArrowUp") {
+        if (upPressTimer) {
+            clearTimeout(upPressTimer);
+            upPressTimer = null;
+            console.log("長押し中断");
+        }
+    }
+});
+
+// 3秒長押し達成時の処理
+function showPikagori() {
+    console.log("pikagori出現！");
+    
+    // 画像要素を動的に作成して画面に出す（またはHTMLにあらかじめ用意してもOKです）
+    const pikagori = document.createElement("img");
+    pikagori.src = "pikagori.png";
+    pikagori.id = "pikagori-obj";
+    
+    // 画面の隅（例：右下や左上の影の隅）に配置するCSSスタイル
+    pikagori.style.position = "fixed";
+    pikagori.style.bottom = "50px";
+    pikagori.style.right = "50px";
+    pikagori.style.width = "100px";
+    pikagori.style.height = "100px";
+    pikagori.style.objectFit = "contain";
+    pikagori.style.zIndex = "1000";
+    pikagori.style.opacity = "0";
+    pikagori.style.transition = "opacity 1s ease"; // ふわっと出す演出
+
+    document.body.appendChild(pikagori);
+
+    // 少し遅れてふわっと表示
+    setTimeout(() => {
+        pikagori.style.opacity = "1";
+    }, 100);
+}
+</script>
 
 </body>
 </html>
